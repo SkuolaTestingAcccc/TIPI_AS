@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Spiegazione dei Tipi di Autonomous System (AS) per studenti di 4a ITIS.">
+    <title>Tipi di Autonomous System (AS)</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-elements">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+    
+    <header class="hero">
+        <div class="container text-center">
+            <h1 class="gradient-text">Autonomous System (AS)</h1>
+            <p class="subtitle">Guida per la 4ª superiore ITIS: Sistemi e Reti</p>
+            <div class="glass-panel description">
+                <h2>Cosa è un AS?</h2>
+                <p>Un <strong>Autonomous System</strong> è un gruppo di reti IP e router sotto il controllo di una singola entità (o amministrazione) che presenta una politica di routing comune e chiaramente definita verso Internet. Ad ogni AS viene assegnato un numero univoco chiamato <strong>ASN</strong> (Autonomous System Number).</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2 class="section-title text-center">I 3 Tipi Principali di AS</h2>
+        <div class="card-grid">
+            
+            <div class="glass-card clickable-card" data-target="modal-1">
+                <div class="card-icon">1️⃣</div>
+                <h3>Stub AS (Terminale)</h3>
+                <p>È un AS collegato <strong>soltanto a un altro AS</strong>. Tutto il traffico in entrata e in uscita passa inevitabilmente attraverso quell'unico collegamento.</p>
+                <ul class="features">
+                    <li>Rete 'vicolo cieco' (non c'è transito).</li>
+                    <li>Tipico di piccole reti o aziende non connesse a ISP multipli.</li>
+                </ul>
+                <div class="card-cta">Premi per approfondire</div>
+            </div>
+
+            <div class="glass-card clickable-card" data-target="modal-2">
+                <div class="card-icon">2️⃣</div>
+                <h3>Multihomed AS</h3>
+                <p>È connesso a <strong>più di un AS</strong>, ma <strong>NON permette</strong> il passaggio di traffico di transito. Significa che non permette a due AS esterni di comunicare tra loro passando attraverso la sua rete.</p>
+                <ul class="features">
+                    <li>Garantisce tolleranza ai guasti (se cade una linea c'è l'altra).</li>
+                    <li>Tipico di grandi aziende o università.</li>
+                </ul>
+                <div class="card-cta">Premi per approfondire</div>
+            </div>
+
+            <div class="glass-card clickable-card" data-target="modal-3">
+                <div class="card-icon">3️⃣</div>
+                <h3>Transit AS (Di Transito)</h3>
+                <p>È collegato a più AS e <strong>permette il traffico di transito</strong>. Inoltra i pacchetti provenienti da un AS verso un altro AS.</p>
+                <ul class="features">
+                    <li>È il "cuore" di Internet (il backbone).</li>
+                    <li>Tipico dei grandi Internet Service Provider (ISP).</li>
+                </ul>
+                <div class="card-cta">Premi per approfondire</div>
+            </div>
+
+        </div>
+
+        <section class="iana-section glass-panel" style="margin-bottom: 4rem;">
+            <h2 class="section-title text-center">Cos'è IANA e come si assegnano gli ASN?</h2>
+            <p class="iana-intro" style="color: var(--text-secondary); text-align: center; max-width: 800px; margin: 0 auto 3rem auto;">
+                L'<strong>IANA</strong> (<em>Internet Assigned Numbers Authority</em>) è l'ente globale responsabile dell'assegnazione degli <strong>AS Number (ASN)</strong> per evitare conflitti mondiali. IANA non li assegna ai singoli provider, ma delega enormi blocchi ai <strong>5 Registri Regionali</strong> (RIR).
+            </p>
+            
+            <div class="iana-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div class="iana-box glass-card" style="box-shadow: none; border-color: rgba(255,255,255,0.05);">
+                    <h3 style="color: #ffd166; margin-bottom: 1rem;">🌍 I 5 Registri (RIR)</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">IANA fornisce i blocchi ai seguenti continenti:</p>
+                    <ul class="features">
+                        <li><strong>RIPE NCC</strong> (Europa e Medio Oriente)</li>
+                        <li><strong>ARIN</strong> (Nord America)</li>
+                        <li><strong>APNIC</strong> (Asia e Pacifico)</li>
+                        <li><strong>LACNIC</strong> (America Latina)</li>
+                        <li><strong>AFRINIC</strong> (Africa)</li>
+                    </ul>
+                </div>
+                
+                <div class="iana-box glass-card" style="box-shadow: none; border-color: rgba(255,255,255,0.05);">
+                    <h3 style="color: #4facfe; margin-bottom: 1rem;">🔢 Tipi di AS Number</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">Come le targhe per auto, gli ASN hanno due formati:</p>
+                    <ul class="features">
+                        <li><strong>A 16-bit:</strong> I vecchi indirizzi, vanno da <strong>1 a 65535</strong>. Alcuni blocchi (es. 64512-65534) sono ad uso privato internamente alle aziende.</li>
+                        <li><strong>A 32-bit:</strong> Introdotti per non esaurire la scorta! Estendono il limite garantendo circa <strong>4,2 miliardi</strong> di ASN.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 3rem; padding-top: 1rem; border-top: 1px dashed var(--border-color);">
+                <a href="https://www.iana.org/assignments/as-numbers/as-numbers.xhtml" target="_blank" style="color: var(--accent-1); text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: color 0.3s ease;">🔗 Fonte Ufficiale IANA</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modals -->
+    <div id="modal-1" class="modal">
+        <div class="modal-content glass-panel">
+            <span class="close-button">&times;</span>
+            <div class="modal-header">
+                <h2>1️⃣ Stub AS (Terminale)</h2>
+            </div>
+            <div class="modal-body">
+                <p>Nelle reti informatiche, uno <strong>Stub AS</strong> è paragonabile a una "strada senza uscita" su Internet. Tutto il traffico che entra nello Stub AS è destinato a un dispositivo al suo interno, e tutto il traffico che esce proviene da un dispositivo al suo interno.</p>
+                
+                <h3 class="modal-subtitle">🌟 Esempio Reale (La tua Scuola)</h3>
+                <p>Immagina l'<strong>azienda locale o l'ITIS che frequenti</strong>. La tua scuola ha la sua rete interna (il suo AS) ma è collegata a Internet solo tramite una singola fibra dell'operatore TIM o Fastweb. La non scuola trasporta i dati per altre aziende o reti; invia e riceve semplicemente i "propri" dati per i propri docenti/studenti su quell'unica connessione.</p>
+
+                <h3 class="modal-subtitle">💡 A cosa serve? Perché si usa?</h3>
+                <p>È la configurazione più semplice. Non sono necessari router costosi per memorizzare l'intera ed enorme tabella di inoltro di Internet! Basta indirizzare tutto il traffico sconosciuto verso il "default gateway" fornito dall'operatore telefonico.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-2" class="modal">
+        <div class="modal-content glass-panel">
+            <span class="close-button">&times;</span>
+            <div class="modal-header">
+                <h2>2️⃣ Multihomed AS</h2>
+            </div>
+            <div class="modal-body">
+                <p>Un <strong>Multihomed AS</strong> fa un passo avanti: si connette a due o più ISP per maggiore sicurezza e affidabilità. Tuttavia, la sua regola fondamentale è che <strong>non fa MAI da ponte</strong>, non inoltra i dati di un ISP verso l'altro ISP.</p>
+                
+                <h3 class="modal-subtitle">🌟 Esempio Reale (Una Banca / Ospedale)</h3>
+                <p>Immagina una <strong>Banca o un grande Ospedale</strong>. Strutture simili non possono permettersi di rimanere senza linea (down). Così si abbonano sia ad Aruba che a WindTre (avendo due uscite). Se le ruspe tranciano il cavo Aruba in strada, il traffico dell'ospedale passa automaticamente sulla linea WindTre.</p>
+                <p>Attenzione però: l'ospedale vieta ai clienti Aruba di transitare nei propri router per raggiungere WindTre. L'accesso a Internet passa solo "in uscita o in entrata" ma non per l'attraversamento!</p>
+
+                <h3 class="modal-subtitle">💡 Perché si usa?</h3>
+                <p>Fondamentalmente per la <strong>Ridondanza </strong>(tolleranza ai guasti) e il <strong>Load Balancing</strong> (bilanciamento per distribuire il traffico su due cavi invece di uno in modo da andare più veloci).</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-3" class="modal">
+        <div class="modal-content glass-panel">
+            <span class="close-button">&times;</span>
+            <div class="modal-header">
+                <h2>3️⃣ Transit AS (AS di Transito)</h2>
+            </div>
+            <div class="modal-body">
+                <p>Il <strong>Transit AS</strong> è ciò che comunemente chiamiamo il "core" o i "tubi principali" di Internet. È connesso a moltissimi altri AS e, al contrario dei precedenti, <strong>il suo mestiere è proprio l'attraversamento</strong>. Instrada i pacchetti anche se non sono diretti a lui.</p>
+                
+                <h3 class="modal-subtitle">🌟 Esempio Reale (Le autostrade e i grandi ISP)</h3>
+                <p>Possiamo paragonarle alle <strong>Autostrade Nazionali</strong>. Le automobili non nascono o muoiono sull'autostrada, ma la usano per andare da Milano a Roma. Nelle reti reali, parliamo dei cosiddetti <strong>ISPs e reti Tier-1</strong> (es. Sparkle in Italia, o colossi del calibro di Hurricane Electric e Lumen). L'ISP prende i dati generati da Roma e li fa transitare e attraversare nelle proprie maglie di fibra intercontinentali per consegnarli allo "Stub AS" di New York.</p>
+
+                <h3 class="modal-subtitle">💡 Perché si usa?</h3>
+                <p>Perché Internet è proprio un "inter-network", una rete di reti. I Transit AS usano il protocollo <strong>BGP (Border Gateway Protocol)</strong> imparando la mappa mondiale di Internet per scambiarsi petabyte di informazioni a nome dei clienti finali.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Progetto realizzato per Sistemi e Reti - 4ª ITIS</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
